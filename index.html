@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Study Gamification App</title>
+
+    
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 class="text-center mb-4">🎯 Study Dashboard</h1>
+
+    <!-- LEVEL + XP -->
+    <div class="card p-3 mb-4">
+        <h2>🔥 Level {{ level }}</h2>
+
+        <p><strong>XP {{ xp }} / 300 ({{ progress }}%)</strong></p>
+
+        <p>🔥 Streak: {{ streak }} days</p>
+
+        <!-- STREAK -->
+        <div class="streak-container">
+            {% for i in range(7) %}
+                {% if i < streak %}
+                    <div class="day active">🔥</div>
+                {% else %}
+                    <div class="day">⚪</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="progress mt-3">
+            
+
+            </div>
+        </div>
+    </div>
+
+    <!-- TASKS -->
+    <div class="card p-3">
+        <h2>📋 Today's Tasks</h2>
+
+        <ul class="list-unstyled">
+
+            <li class="task-item">
+                <span>Study school notes</span>
+                <form action="/complete" method="POST">
+                    <input type="hidden" name="xp" value="10">
+                    <button class="complete-btn">✔</button>
+                </form>
+            </li>
+
+            <li class="task-item">
+                <span>Read books</span>
+                <form action="/complete" method="POST">
+                    <input type="hidden" name="xp" value="10">
+                    <button class="complete-btn">✔</button>
+                </form>
+            </li>
+
+            <li class="task-item">
+                <span>Manage study time</span>
+                <form action="/complete" method="POST">
+                    <input type="hidden" name="xp" value="10">
+                    <button class="complete-btn">✔</button>
+                </form>
+            </li>
+
+        </ul>
+
+        <button class="add-btn mt-3">+ Add New Task</button>
+    </div>
+
+</div>
+
+</body>
+</html>
